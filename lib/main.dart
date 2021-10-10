@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MealsApp',
+      title: 'Cafe Bacardi',
       theme: ThemeData(
           primarySwatch: Colors.blue,
           // ignore: deprecated_member_use
