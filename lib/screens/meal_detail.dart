@@ -4,6 +4,9 @@ import '../dummy_data.dart';
 // ignore: use_key_in_widget_constructors
 class MealDetail extends StatelessWidget {
   static const routeName = '/categorymeals';
+  final Function _togFavMeal;
+  final Function _isMealFavMeal;
+  MealDetail(this._togFavMeal, this._isMealFavMeal);
 
   Widget buildSectionTitle(BuildContext context, String text) {
     return Container(
@@ -119,10 +122,9 @@ class MealDetail extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.delete),
-          onPressed: () {
-            Navigator.of(context).pop(mealId);
-          }),
+        backgroundColor: (Colors.red),
+          child: Icon(_isMealFavMeal(mealId)?Icons.star:Icons.star_border),
+          onPressed: () => _togFavMeal(mealId)),
     );
   }
 }

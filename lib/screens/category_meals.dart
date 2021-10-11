@@ -1,10 +1,12 @@
 import '../models/meal.dart';
-import 'package:app4/widgets/meal_item.dart';
+import '../widgets/meal_item.dart';
 import 'package:flutter/material.dart';
 import '../dummy_data.dart';
 
 class CategoryMeals extends StatefulWidget {
   static const routeName = '/Categories';
+  final List<Meal> availableMeals;
+  CategoryMeals(this.availableMeals);
 
   @override
   State<CategoryMeals> createState() => _CategoryMealsState();
@@ -29,19 +31,13 @@ bool _loadedinitData = false;
     ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     final String? cuisine = routeArgs['title'];
     final String? id = routeArgs['id'];
-    final DisplayMeals = dummyMeals.where((mealctx) {
+    // ignore: non_constant_identifier_names
+    final DisplayMeals = widget.availableMeals.where((mealctx) {
     return mealctx.categories.contains(id);
     }).toList();
     }
    _loadedinitData = true;
     }
-
-    void _removeMeal(String mealId)
-  {
-      setState(() {
-        DisplayMeals.removeWhere((meal) => meal.id == mealId);
-      });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +54,7 @@ bool _loadedinitData = false;
             imageUrl: DisplayMeals[indx].imageUrl,
             duration: DisplayMeals[indx].duration,
             affordability: DisplayMeals[indx].affordability,
-            complexity: DisplayMeals[indx].complexity, removeItem: _removeMeal,
+            complexity: DisplayMeals[indx].complexity, 
           );
         },
         itemCount: DisplayMeals.length,

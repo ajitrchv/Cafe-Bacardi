@@ -11,7 +11,7 @@ class MealItem extends StatefulWidget {
   final int duration;
   final Complexity complexity;
   final Affordability affordability;
-  final Function removeItem;
+
 
   MealItem({
     required this.id,
@@ -20,7 +20,7 @@ class MealItem extends StatefulWidget {
     required this.duration,
     required this.complexity,
     required this.affordability,
-    required this.removeItem,
+    
   });
 
   @override
@@ -59,7 +59,7 @@ class _MealItemState extends State<MealItem> {
       MealDetail.routeName,
       arguments: widget.id,).then((result) => {
         if(result != null){
-          widget.removeItem(result)
+          //widget.removeItem(result)
         }
       });
   }

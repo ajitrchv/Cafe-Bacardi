@@ -2,11 +2,15 @@ import '../widgets/main_drawer.dart';
 import 'package:flutter/gestures.dart';
 
 import '../screens/fav_screen.dart';
+import '../models/meal.dart';
 
 import '../screens/categories_screen.dart';
 import 'package:flutter/material.dart';
 
 class TabScreeen extends StatefulWidget {
+  final List<Meal> _favtabMeal;
+  TabScreeen(this._favtabMeal);
+
   @override
   _TabScreeenState createState() => _TabScreeenState();
 }
@@ -52,7 +56,7 @@ class _TabScreeenState extends State<TabScreeen> {
         body: TabBarView(
           children: [
             categories_screen(),
-            FavScreen(),
+            FavScreen(widget._favtabMeal),
           ],
         ),
       ),

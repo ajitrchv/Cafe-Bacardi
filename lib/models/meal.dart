@@ -28,6 +28,7 @@ final bool isLactoseFree;
 final bool isVegan;
 final bool isVegetarian;
 
+
 Meal(
 {
 required this.id,
